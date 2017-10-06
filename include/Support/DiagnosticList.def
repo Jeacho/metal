@@ -1,0 +1,121 @@
+
+#if !(defined(DIAG) || (defined(ERROR) && defined(WARNING) && defined(NOTE)))
+#  error Must define either DIAG or the set {ERROR,WARNING,NOTE}
+#endif
+
+#ifndef ERROR
+#  define ERROR(DIAGID,TEXT,OPTIONS,ARGS)   \
+  DIAG(Error,DIAGID,TEXT,OPTIONS,ARGS)
+#endif
+
+#ifndef WARNING
+#  define WARNING(DIAGID,TEXT,OPTIONS,ARGS) \
+  DIAG(Warning,DIAGID,TEXT,OPTIONS,ARGS)
+#endif
+
+#ifndef NOTE
+#  define NOTE(DIAGID,TEXT,OPTIONS,ARGS) \
+  DIAG(Note,DIAGID,TEXT,OPTIONS,ARGS)
+#endif
+
+// --- ------------------------- LEXER ERRORS --------------------------- --- //
+// --- ------------------------------------------------------------------ --- //
+
+// String Errors
+ERROR(unterminated_string, "missing terminating \" character",
+    None, ())
+
+// Character Literal Errors
+ERROR(empty_character_literal, "empty character literal",
+    None, ())
+
+ERROR(unterminated_character_literal, "missing terminating \' character",
+    None, ())
+
+// Number Literal Errors
+ERROR(invalid_number_type_identifier, "invalid number system identifier %0",
+    None, (StringRef))
+
+ERROR(invalid_hexdecimal_character, "invalid hexdecimal character %0",
+    None, (StringRef))
+
+ERROR(invalid_binary_character, "invalid binary character %0", None, (StringRef))
+
+ERROR(invalid_octal_character, "invalid octal character %0", None, (StringRef))
+
+ERROR(expected_exponent_number, "expected exponent number after %0", None,
+    (StringRef))
+
+ERROR(too_many_decimals, "too many decimals in number", None, ())
+
+ERROR(decimals_in_exponent, "exponent cannot be decimal number", None, ())
+
+// MISC ERRORS
+ERROR(nonexistant_operator, "the operator %0 does not exist in chimp syntax",
+    None, (StringRef))
+
+ERROR(extranous_null_character, "extranous null character not at file end",
+    None, ())
+
+ERROR(unterminated_multilined_comment, "unterminated multi-lined comment",
+    None, ())
+
+ERROR(extranous_multilined_comment_terminator,
+    "extranous multi-lined comment found without begining", None, ())
+
+// --- ---------------------- LEXER WARNINGS ----------------------- --- //
+
+// MISC WARNINGS
+WARNING(invalid_escape_character_seq, "invalid escape character sequence %0",
+    None, (StringRef))
+
+WARNING(multicharacter_character_literal, "muli-character character literal",
+    None, ())
+
+// --- ------------------------------------------------------------------ --- //
+// --- ------------------------------------------------------------------ --- //
+
+
+
+// --- ------------------------- PARSER ERRORS -------------------------- --- //
+// --- ------------------------------------------------------------------ --- //
+
+ERROR(expected_identifier, "expected identifier before %0", None, (StringRef))
+
+ERROR(expected_initalizer, "expected initalizer after %0", None, (StringRef))
+
+ERROR(duplicate_const, "duplicate ‘\033[1;37mconst\033[0m’", None, ())
+
+ERROR(duplicate_static, "duplicate ‘\033[1;37mstatic\033[0m’", None, ())
+
+ERROR(duplicate_unsigned, "duplicate ‘\033[1;37munsigned\033[0m’", None, ())
+
+ERROR(duplicate_signed, "duplicate ‘\033[1;37msigned\033[0m’", None, ())
+
+ERROR(signed_and_unsigned_together,
+    "‘\033[1;37msigned\033[0m’ and ‘\033[1;37munsigned\033[0m’ specified together for %0",
+    None, (StringRef))
+
+ERROR(declaration_does_not_declare, "declaration does not declare anything",
+    None, ())
+
+ERROR(multiple_type_declarations, "two or more data types in declaration of %0",
+    None, (StringRef))
+
+ERROR(invalid_ptr_type, "%0 is not a type and cannot be a pointer", None, ())
+
+ERROR(invalid_type_attribute_after_ptr,
+    "‘\033[1;37mconst\033[0m’ is the only type attribute allowed for pointers", None, ())
+
+ERROR(invalid_token_after_declarators,
+    "invalid token %0 after declarators", None, (StringRef))
+
+ERROR(same_type_specificed, "%0 specified twice for this type",
+    None, (StringRef))
+
+// --- ------------------------ PARSER WARNINGS ------------------------- --- //
+
+// --- ------------------------------------------------------------------ --- //
+// --- ------------------------------------------------------------------ --- //
+
+#undef DIAG

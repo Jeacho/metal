@@ -1,0 +1,135 @@
+
+#ifndef OPERATOR
+# define OPERATOR(name, str)
+#endif
+
+#ifndef KEYWORD
+# define KEYWORD(name, str)
+#endif
+
+#ifndef MISC
+# define MISC(name, str)
+#endif
+
+#ifndef LITERAL
+# define LITERAL(name, str)
+#endif
+
+#ifndef PUNCTUATOR
+# define PUNCTUATOR(name, str)
+#endif
+
+// Keywords
+KEYWORD(class, "class")
+KEYWORD(private, "private")
+KEYWORD(public, "public")
+KEYWORD(struct, "struct")
+KEYWORD(typedef, "typedef")
+KEYWORD(enum, "enum")
+KEYWORD(this, "this")
+
+KEYWORD(if, "if")
+KEYWORD(else, "else")
+KEYWORD(while, "while")
+KEYWORD(for, "for")
+KEYWORD(switch, "switch")
+KEYWORD(case, "case")
+KEYWORD(default, "default")
+KEYWORD(true, "true")
+KEYWORD(false, "false")
+KEYWORD(break, "break")
+KEYWORD(import, "import")
+KEYWORD(return, "return")
+
+KEYWORD(void, "void")
+KEYWORD(double, "double")
+KEYWORD(float, "float")
+KEYWORD(int, "int")
+KEYWORD(short, "short")
+KEYWORD(char, "char")
+KEYWORD(bool, "bool")
+
+KEYWORD(unsigned, "unsigned")
+KEYWORD(signed, "signed")
+KEYWORD(const, "const")
+KEYWORD(static, "static")
+
+// Bitwise operators
+OPERATOR(left_bitshift, "<<")
+OPERATOR(right_bitshift, ">>")
+OPERATOR(bitwise_not, "~")
+OPERATOR(bitwise_and, "&")
+OPERATOR(bitwise_xor, "^")
+OPERATOR(bitwise_or, "|")
+
+// Arithmetic operators
+OPERATOR(add, "+")
+OPERATOR(sub, "-")
+OPERATOR(mul, "*")
+OPERATOR(quo, "/")
+OPERATOR(assign, "=")
+OPERATOR(modulo, "%")
+OPERATOR(inc, "++")
+OPERATOR(dec, "--")
+
+// Compound assignment operator
+OPERATOR(left_bitshift_equal, "<<=")
+OPERATOR(right_bitshift_equal, ">>=")
+OPERATOR(bit_or_equal, "|=")
+OPERATOR(bit_xor_equal, "^=")
+OPERATOR(bit_and_equal, "&=")
+OPERATOR(add_equal, "+=")
+OPERATOR(sub_equal, "-=")
+OPERATOR(mul_equal, "*=")
+OPERATOR(quo_equal, "/=")
+OPERATOR(mod_equal, "%=")
+
+// Comparison operators
+OPERATOR(equal_to, "==")
+OPERATOR(not_equal, "!=")
+OPERATOR(greater, ">")
+OPERATOR(lesser, "<")
+OPERATOR(gtr_equal, ">=")
+OPERATOR(les_equal, "<=")
+
+// Logical operators
+OPERATOR(logic_not, "!")
+OPERATOR(logic_and, "&&")
+OPERATOR(logic_or, "||")
+
+// Misc operators
+OPERATOR(scope, "~~>")
+OPERATOR(address, "@")
+OPERATOR(pointer, "*")
+OPERATOR(period, ".")
+OPERATOR(comma, ",")
+
+// Punctuator
+PUNCTUATOR(colon, ":")
+PUNCTUATOR(semi_colon, ";")
+PUNCTUATOR(brace_left, "[")
+PUNCTUATOR(brace_right, "]")
+PUNCTUATOR(bracket_left, "(")
+PUNCTUATOR(bracket_right, ")")
+PUNCTUATOR(curly_left, "{")
+PUNCTUATOR(curly_right, "}")
+PUNCTUATOR(question, "?")
+
+// Literals
+LITERAL(int_lit, "integer literal")
+LITERAL(float_lit, "float literal")
+LITERAL(long_lit, "long literal")
+LITERAL(char_lit, "char literal")
+LITERAL(string_lit, "string literal")
+
+// Misc token flavors
+MISC(none, "none")
+MISC(unknown, "unknown")
+MISC(eof, "eof")
+MISC(identifier, "identifier")
+
+#undef OPERATOR
+#undef PUNCTUATOR
+#undef LITERAL
+#undef MISC
+#undef KEYWORD
