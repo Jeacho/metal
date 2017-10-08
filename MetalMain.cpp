@@ -4,7 +4,7 @@
 int main() {
     SourceManager SourceMgr;
     unsigned BufferID =
-        SourceMgr.AddIncludeFile("/Users/macadmin/Desktop/metal/samples/BufferTest.mtl");
+        SourceMgr.AddIncludeFile("/home/jacob/Documents/metal/samples/BufferTest.mtl");
 
     DiagnosticEngine DiagEngine(SourceMgr);
 

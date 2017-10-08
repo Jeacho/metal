@@ -113,7 +113,13 @@ ERROR(invalid_token_after_declarators,
 ERROR(same_type_specificed, "%0 specified twice for this type",
     None, (StringRef))
 
+ERROR(invalid_ptr_modifier, "pointers can only be constants", None, (StringRef))
+
 // --- ------------------------ PARSER WARNINGS ------------------------- --- //
+
+// --- -------------------------- PARSER NOTES -------------------------- --- //
+
+NOTE(this_was_ignored, "%0 was ignored", None, (StringRef))
 
 // --- ------------------------------------------------------------------ --- //
 // --- ------------------------------------------------------------------ --- //

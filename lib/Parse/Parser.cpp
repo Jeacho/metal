@@ -34,6 +34,20 @@ Statement *Parser::ParseErrorStub(T ...OtherTypes) {
     return new ErrorStub(Tokens);
 }
 
+Expression *Parser::ParseExpression() {
+    // Stack for formation of Expression Nodes
+    std::stack<Token> TokStack;
+    Expression *Ret = nullptr;
+
+    if (Tokens[TokIdx].Is(TokType::logic_not)) {
+        Ret = new UnaryExpr(Tokens[TokIdx++], ParseExpression());
+    } else if (Tokens[TokIdx].Is(TokType::identifier)) {
+        Ret = new TermExpr(Tokens[TokIdx++]);
+    }
+
+    return Ret;
+}
+
 Statement *Parser::ParseDeclaration() {
     TypeAttributes TypeMod;
 
@@ -141,9 +155,23 @@ Statement *Parser::ParseDeclaration() {
         ++TokIdx;
     }
 
+    // Consume pointer types
     while (Tokens[TokIdx].Is(TokType::mul)) {
-        TypeMod.PointerAttributes.push_back(Tokens[++TokIdx].Is(TokType::kw_const) ? 0 : 1);
-        ++TokIdx;
+         ++TokIdx;
+
+         if (Tokens[TokIdx].IsNot(TokType::kw_const, TokType::mul,
+                TokType::identifier)) {
+            DiagEngine->Diagnose(Tokens[TokIdx].GetRange(),
+                DiagID::invalid_ptr_modifier, Tokens[TokIdx].GetText());
+
+            DiagEngine->Diagnose(Tokens[TokIdx].GetRange(),
+                DiagID::this_was_ignored, Tokens[TokIdx].GetText());
+        }
+
+        if (Tokens[TokIdx].IsNot(TokType::mul, TokType::identifier))
+            ++TokIdx;
+
+        TypeMod.PointerAttributes.push_back(Tokens[TokIdx].Is(TokType::kw_const) ? 0 : 1);
     }
 
     if (Tokens[TokIdx].Is(TokType::identifier)) {
@@ -169,7 +197,30 @@ Statement *Parser::ParseDeclaration() {
                 DiagID::signed_and_unsigned_together,
                 Tokens[TokIdx].GetText());
 
-        
+        // Consume identifier
+        ++TokIdx;
+
+        if (Tokens[TokIdx].Is(TokType::semi_colon)) {
+            SymbolTable.insert(std::pair<const char *, Symbol>
+                (Tokens[TokIdx].GetText().Data(),
+                Symbol(TypeMod, Tokens[TokIdx - 1], nullptr)));
+
+            ++TokIdx;
+
+        } else if (Tokens[TokIdx].Is(TokType::assign)) {
+            // Consume assign.
+            ++TokIdx;
+
+            SymbolTable.insert(std::pair<const char *, Symbol>
+                (Tokens[TokIdx].GetText().Data(),
+                Symbol(TypeMod, Tokens[TokIdx - 1], ParseExpression())));
+
+        } else {
+            // Dont think this is possible because of statment parsing but
+            // we'll see
+
+            std::cout << "lala" << '\n';
+        }
 
     } else if (Tokens[TokIdx].IsAny(TokType::semi_colon, TokType::eof)) {
         DiagEngine->Diagnose(SourceRange(Tokens[DeclarationStart].GetText().Begin(),

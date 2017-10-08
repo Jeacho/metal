@@ -27,9 +27,9 @@ typedef struct Symbol {
     // Token this symbol represents
     Token Identifier;
 
-    Statement *Value;
+    Expression *Value;
 
-    Symbol(TypeAttributes attributes, Token ident, Statement *ptr) { }
+    Symbol(TypeAttributes attributes, Token ident, Expression *ptr) { }
 } Symbol;
 
 class Parser {
@@ -49,14 +49,14 @@ class Parser {
     // AST formation
     Scope *GlobalScope;
 
-    std::stack<Token> TokStack;
-
     // Parsing sub-routines
+    Expression *ParseExpression();
+
     template<typename ...T>
     Statement *ParseErrorStub(T ...OtherTypes);
     Statement *ParseDeclaration();
 
-    std::map<char *, Symbol> SymbolTable;
+    std::map<const char *, Symbol> SymbolTable;
 
 public:
     Parser(DiagnosticEngine *DE, const SourceManager &SM, unsigned BufID)

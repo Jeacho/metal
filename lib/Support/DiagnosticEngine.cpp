@@ -33,7 +33,7 @@ void DiagnosticEngine::EmitDiagnostic(Diagnostic Diag) {
 
 	SourceLine =
 		SourceLine.Slice(LineStart - SourceLine.Data(), SourceLine.Size());
-		
+
 	// Insert ANSI colors in SourceLine using the Diag's SourceRange.
 	unsigned StartIdx	= Diag.Range.Start.GetPointer() - SourceLine.Begin();
 	unsigned EndIdx		= Diag.Range.End.GetPointer() - SourceLine.Begin() + 1;
@@ -62,6 +62,6 @@ void DiagnosticEngine::EmitDiagnostic(Diagnostic Diag) {
 		// The line of the location this diagnostic occurs on
 		<< FmtBeginning << FrontColorASNI << FmtMiddle << "\033[0m" << FmtEnd
 		// Format the underline spacing
-		<< "\n\t" << FrontColorASNI << Spacing << Underline << "\033[0m" << "\n"
+		<< "\n\t" << FrontColorASNI << Spacing << Underline << "\033[0m" 
 		<< std::endl;
 }

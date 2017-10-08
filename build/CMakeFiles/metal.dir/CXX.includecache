@@ -168,13 +168,13 @@ vector
 
 ../include/Support/DiagnosticList.def
 
-/Users/macadmin/desktop/metal/MetalMain.cpp
+/home/jacob/Documents/metal/MetalMain.cpp
 Parse/Parser.hpp
-/Users/macadmin/desktop/metal/Parse/Parser.hpp
+/home/jacob/Documents/metal/Parse/Parser.hpp
 
-/Users/macadmin/desktop/metal/lib/Basic/MemoryBuffer.cpp
+/home/jacob/Documents/metal/lib/Basic/MemoryBuffer.cpp
 Basic/MemoryBuffer.hpp
-/Users/macadmin/desktop/metal/lib/Basic/Basic/MemoryBuffer.hpp
+/home/jacob/Documents/metal/lib/Basic/Basic/MemoryBuffer.hpp
 system_error
 -
 string
@@ -186,33 +186,33 @@ iostream
 fstream
 -
 
-/Users/macadmin/desktop/metal/lib/Basic/SourceManager.cpp
+/home/jacob/Documents/metal/lib/Basic/SourceManager.cpp
 Basic/SourceManager.hpp
-/Users/macadmin/desktop/metal/lib/Basic/Basic/SourceManager.hpp
+/home/jacob/Documents/metal/lib/Basic/Basic/SourceManager.hpp
 
-/Users/macadmin/desktop/metal/lib/Parse/Lexer.cpp
+/home/jacob/Documents/metal/lib/Parse/Lexer.cpp
 Support/DiagnosticEngine.hpp
-/Users/macadmin/desktop/metal/lib/Parse/Support/DiagnosticEngine.hpp
+/home/jacob/Documents/metal/lib/Parse/Support/DiagnosticEngine.hpp
 Parse/Lexer.hpp
-/Users/macadmin/desktop/metal/lib/Parse/Parse/Lexer.hpp
+/home/jacob/Documents/metal/lib/Parse/Parse/Lexer.hpp
 Parse/TokenKind.def
-/Users/macadmin/desktop/metal/lib/Parse/Parse/TokenKind.def
+/home/jacob/Documents/metal/lib/Parse/Parse/TokenKind.def
 
-/Users/macadmin/desktop/metal/lib/Parse/Parser.cpp
+/home/jacob/Documents/metal/lib/Parse/Parser.cpp
 Parse/Parser.hpp
-/Users/macadmin/desktop/metal/lib/Parse/Parse/Parser.hpp
+/home/jacob/Documents/metal/lib/Parse/Parse/Parser.hpp
 map
 -
 
-/Users/macadmin/desktop/metal/lib/Support/Diagnostic.cpp
+/home/jacob/Documents/metal/lib/Support/Diagnostic.cpp
 Support/Diagnostic.hpp
-/Users/macadmin/desktop/metal/lib/Support/Support/Diagnostic.hpp
+/home/jacob/Documents/metal/lib/Support/Support/Diagnostic.hpp
 
-/Users/macadmin/desktop/metal/lib/Support/DiagnosticEngine.cpp
+/home/jacob/Documents/metal/lib/Support/DiagnosticEngine.cpp
 iostream
 -
 Support/Diagnostic.hpp
-/Users/macadmin/desktop/metal/lib/Support/Support/Diagnostic.hpp
+/home/jacob/Documents/metal/lib/Support/Support/Diagnostic.hpp
 Support/DiagnosticEngine.hpp
-/Users/macadmin/desktop/metal/lib/Support/Support/DiagnosticEngine.hpp
+/home/jacob/Documents/metal/lib/Support/Support/DiagnosticEngine.hpp
 
